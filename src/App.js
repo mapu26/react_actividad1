@@ -1,23 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import imagen0 from './Imagenes/rey_atanagildo.png';
+import imagen1 from './Imagenes/rey_leogivildo.png';
+import imagen2 from './Imagenes/rey_sisebuto.png';
+import imagen3 from './Imagenes/rey_incognito.png';
+import './miCss.css';
 
 function App() {
+  let nombres =["Atanagildo", "Leogivildo", "Sisebuto"];
+  
+  const cambiarTexto=(e)=>{
+    if(e.target.innerHTML=="Visto"){
+      e.target.innerHTML = "";
+    }else{
+      e.target.innerHTML = "Visto";
+    }
+  }
+
+  const cambiarImagen=(e)=>{
+    if(e.target.src.includes("incognito")){
+      e.target.style.visibility = "hidden";
+    }else{
+      e.target.src = imagen3;
+    }
+    e.target.parentNode.style.backgroundColor = "White"; /*parentNode, accede al padre del elemento, en este caso a div caja*/
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className = "contenedor">
+      <div className = 'caja'>
+        <img onClick = {cambiarImagen} src = {imagen0}/>
+        <div onClick = {cambiarTexto} className = 'nombre'>{nombres[0]}</div>
+      </div>
+      <div className = 'caja'>
+        <img onClick = {cambiarImagen} src = {imagen1}/>
+        <div onClick = {cambiarTexto} className = 'nombre'>{nombres[1]}</div>
+      </div>
+      <div className = 'caja'>
+        <img onClick = {cambiarImagen} src = {imagen2}/>
+        <div onClick = {cambiarTexto} className = 'nombre'>{nombres[2]}</div>
+      </div>
     </div>
   );
 }
